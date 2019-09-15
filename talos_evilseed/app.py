@@ -8,12 +8,14 @@ import tkinter
 from talos_evilseed import schema
 from talos_evilseed.seed_state import SeedState
 from talos_evilseed.widgets.main import MainWindow
+from talos_evilseed.widgets.portal_cell import PortalCell
 from talos_evilseed.widgets.puzzle_cell import PuzzleCell
 
 
 class Application:
     """Main application state."""
     __slots__ = (
+        "_active_portal",
         "_active_puzzle",
         "_arg_parser",
         "_arg_map",
@@ -22,6 +24,7 @@ class Application:
     )
 
     def __init__(self, *, appname: str, args: Sequence[str]) -> None:
+        self._active_portal: Optional[PortalCell] = None
         self._active_puzzle: Optional[PuzzleCell] = None
         self._build_arg_parser()
         self._parse_args(args=list(args))
@@ -72,8 +75,43 @@ class Application:
             self._active_puzzle = puzzle
             self._active_puzzle.set_active(True)
 
+    def on_portal_lmb_click(self, portal: PortalCell) -> None:
+        if self._active_portal is not None:
+            # We have an active cell, does it match?
+            if portal is self._active_portal:
+                # Yes - deactivate the cell and DO NOT SWAP.
+                self._active_portal.set_active(False)
+                self._active_portal = None
+            else:
+                # No - swap! and then deactivate.
+                s0 = portal.get_portal()
+                s1 = self._active_portal.get_portal()
+                portal.set_portal(s1)
+                self._active_portal.set_portal(s0)
+
+                # Save the new swap
+                with self._seed_state.atomic():
+                    self._seed_state.set_portal_for_level(
+                        portal.get_level_name(),
+                        portal.get_portal(),
+                    )
+                    self._seed_state.set_portal_for_level(
+                        self._active_portal.get_level_name(),
+                        self._active_portal.get_portal(),
+                    )
+
+                self._active_portal.set_active(False)
+                self._active_portal = None
+        else:
+            # Activate this cell.
+            self._active_portal = portal
+            self._active_portal.set_active(True)
+
     def get_sigil_for_puzzle(self, level_name: str, puzzle_name: str) -> str:
         return self._seed_state.get_sigil_for_puzzle(level_name, puzzle_name)
+
+    def get_portal_for_level(self, level_name: str) -> str:
+        return self._seed_state.get_portal_for_level(level_name)
 
     def _build_main_window(self) -> None:
         self._main_window: MainWindow = MainWindow(app=self)

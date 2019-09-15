@@ -9,6 +9,7 @@ import tkinter
 from tkinter import Frame
 from tkinter import Label
 
+from talos_evilseed.widgets.portal_cell import PortalCell
 from talos_evilseed.widgets.puzzle_cell import PuzzleCell
 
 if TYPE_CHECKING:
@@ -20,6 +21,7 @@ class PuzzleRow:
         "_app",
         "_level_label",
         "_level_name",
+        "_portal_cell",
         "_portal_label",
         "_master",
         "_puzzle_cells",
@@ -44,19 +46,33 @@ class PuzzleRow:
             row=self._row,
         )
 
-        self._portal_label: Label = Label(
-            master,
-            text=self._level_name[:2].replace("S","*"),
-            relief=(tkinter.RAISED if self._level_name != "Nexus" else tkinter.FLAT),
-            borderwidth=2,
-        )
-        self._portal_label.grid(
-            sticky=tkinter.W+tkinter.E+tkinter.N+tkinter.S,
-            column=1,
-            row=self._row,
-            padx=20,
-            ipadx=10,
-        )
+        self._portal_cell: Optional[PortalCell] = None
+        self._portal_label: Optional[Label] = None
+
+        if self._level_name == "Nexus":
+            self._portal_label = Label(
+                master,
+                text=" ",
+                relief=tkinter.FLAT,
+                borderwidth=2,
+            )
+            self._portal_label.grid(
+                sticky=tkinter.W+tkinter.E+tkinter.N+tkinter.S,
+                column=1,
+                row=self._row,
+                padx=20,
+                ipadx=10,
+            )
+
+        else:
+            self._portal_cell = PortalCell(
+                master,
+                level_name=self._level_name,
+                app=self._app,
+                row=self._row,
+                column=1,
+            )
+
         self._build_puzzle_cells()
 
     def _build_puzzle_cells(self) -> None:
