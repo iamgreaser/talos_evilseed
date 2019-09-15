@@ -13,15 +13,16 @@ from tkinter import Frame
 
 
 COLOR_MAP: Dict[str, str] = {
+    # Some of these look kinda bad, but colourblind people do exist
     "D": "#00FF00",
-    "M": "#FFFF00",
-    "N": "#FF0000",
+    "M": "#FFFF99",
+    "N": "#CC0000",
     "E": "#AAAAAA",
-    "*": "#FFFF00",
+    "*": "#FFFF99",
 }
 
 SHAPE_MAP: Dict[str, List[Tuple[int, int]]] = {
-    "I": [(0,0), (1,0), (2,0), (3,0)],
+    "I": [(0,1), (1,1), (2,1), (3,1)],
     "J": [(0,0), (0,1), (1,1), (2,1)],
     "L": [(2,0), (0,1), (1,1), (2,1)],
     "O": [(0,0), (1,0), (0,1), (1,1)],
@@ -49,7 +50,7 @@ class SigilWidget:
 
         self._sigil_icon: Canvas = Canvas(
             self._sigil_frame,
-            width=44,
+            width=54,
             height=22,
         )
         self._shapes: List[Any] = []
@@ -63,6 +64,12 @@ class SigilWidget:
             shape_name=sigil_name[1],
             bg=False,
         )
+        self._shapes.append(self._sigil_icon.create_text( # type: ignore
+            54,
+            0,
+            anchor=tkinter.NE,
+            text=self._sigil_name[:2],
+        ))
 
         # FIXME this layout sucks
         #self._sigil_frame.grid(sticky=tkinter.S+tkinter.W+tkinter.E)
