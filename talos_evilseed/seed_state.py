@@ -107,10 +107,10 @@ class SeedState:
         data: Dict[str, Any] = {
             "Randomizer_ExtraSeed": random.randint(0,(1<<31)-1),
             "Randomizer_Generated": 1,
-            "Randomizer_Mode": "Default",
-            "Randomizer_Mobius": None,
-            "Randomizer_Moody": None,
-            "Randomizer_Scavenger": None,
+            "Randomizer_Mode": 0,#schema.MODES["Values"]["Default"]["id"],
+            "Randomizer_Mobius": 0,
+            "Randomizer_Moody": 0,
+            "Randomizer_Scavenger": 0,
             "Randomizer_Seed": -42069,
             "PaintItemSeed": random.randint(0,(1<<31)-1),
             "Code_Floor4": random.randint(0,999),
@@ -128,7 +128,9 @@ class SeedState:
         for idx, name in enumerate(schema.PORTAL_ORDER):
             for level_name, level in schema.PUZZLES.items():
                 for puzzle_name, puzzle in level.items():
-                    data[puzzle["talosProgress"]] = self._puzzle_to_sigil_map[level_name][puzzle_name]
+                    data[puzzle["talosProgress"]] = (schema.ALL_TETROS.index(
+                        self._puzzle_to_sigil_map[level_name][puzzle_name]
+                    ) + 1)
 
         # Random portals
         # TODO: add support for this
@@ -140,31 +142,15 @@ class SeedState:
         # TODO: Randomizer_LastShape
         # TODO: Randomizer_ScavengerEnding
 
-        with open(fname, "w") as luafp:
-            for base_key in ["prj_strCustomOccasion", "ser_strBanList",]:
-                luafp.write(f"{base_key}=[===[")
-                luafp.write("Randomizer_AutoStart={")
-                sl: List[str] = []
-                for key, rawvalue in data.items():
-                    if isinstance(rawvalue, str):
-                        escvalue: str = rawvalue.replace("\\", "\\\\").replace("'", "\\'")
-                        svalue: str = f"'{escvalue}'"
-                    elif isinstance(rawvalue, float):
-                        svalue = f"{rawvalue:f}"
-                    elif isinstance(rawvalue, int):
-                        svalue = f"{rawvalue:d}"
-                    elif rawvalue is True:
-                        svalue = f"1"
-                    elif rawvalue is False:
-                        svalue = f"0"
-                    elif rawvalue is None:
-                        svalue = f"0"
-                    else:
-                        raise Exception(f"TODO: make Lua type for {rawvalue!r} ({type(rawvalue)!r})")
+        output_str: str = "Randomizer_AutoStart={"
+        for key, value in data.items():
+            if not isinstance(value, int):
+                print(f"{key} does not have an int value, has {type(value)}")
+                continue
+            output_str += f"'{key}'={value},"
+        output_str = output_str[:-1] + "};"
 
-                    sl.append(f"'{key}'={svalue}")
-                s: str = ",".join(sl)
-                luafp.write(s)
-                luafp.write("}")
-                luafp.write("]===]\n")
+        with open(f"{fname}", "w") as fp:
+            fp.write(f'prj_strCustomOccasion="{output_str}"\n')
+            fp.write(f'ser_strBanList="{output_str}"\n')
 
