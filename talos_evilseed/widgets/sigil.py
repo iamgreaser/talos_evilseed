@@ -48,8 +48,8 @@ class SigilWidget:
 
         self._sigil_icon: Canvas = Canvas(
             self._sigil_frame,
-            width=54,
-            height=22,
+            width=56,
+            height=24,
         )
         self._shapes: List[int] = []
 
@@ -79,7 +79,7 @@ class SigilWidget:
             bg=False,
         )
         self._shapes.append(self._sigil_icon.create_text( # type: ignore
-            54,
+            56,
             0,
             anchor=tkinter.NE,
             text=self._sigil_name[:2],
@@ -97,10 +97,10 @@ class SigilWidget:
                 for point_idx in range(POINT_COUNT):
                     a0 = point_idx*math.pi*2/POINT_COUNT
                     a1 = (point_idx+0.5)*math.pi*2/POINT_COUNT
-                    px0 = round(8+6+ORADIUS*+math.sin(a0))
-                    py0 = round(8+3+ORADIUS*-math.cos(a0))
-                    px1 = round(8+6+IRADIUS*+math.sin(a1))
-                    py1 = round(8+3+IRADIUS*-math.cos(a1))
+                    px0 = round(8+7+ORADIUS*+math.sin(a0))
+                    py0 = round(8+4+ORADIUS*-math.cos(a0))
+                    px1 = round(8+7+IRADIUS*+math.sin(a1))
+                    py1 = round(8+4+IRADIUS*-math.cos(a1))
                     points += [px0, py0, px1, py1]
 
                 self._shapes.append(self._sigil_icon.create_polygon( # type: ignore
@@ -112,8 +112,8 @@ class SigilWidget:
         else:
             radius = (5 if bg else 4)
             for cx, cy, in SHAPE_MAP[shape_name]:
-                x = cx*8+6
-                y = cy*8+6
+                x = cx*8+7
+                y = cy*8+7
                 self._shapes.append(self._sigil_icon.create_rectangle( # type: ignore
                     x-radius, y-radius,
                     x+radius, y+radius,
