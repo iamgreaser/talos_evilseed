@@ -1,0 +1,15 @@
+# For dev purposes
+_norepo/
+
+# Output
+*.pyz
+
+# Python
+*.pyc
+*.pyo
+__pycache__/
+.mypy_cache/
+
+# VIM
+.sw?
+.*.sw?
