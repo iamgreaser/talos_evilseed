@@ -16,6 +16,7 @@ if TYPE_CHECKING:
 
 class PuzzleCell:
     __slots__ = (
+        "_active",
         "_app",
         "_column",
         "_frame",
@@ -31,6 +32,7 @@ class PuzzleCell:
         #super().__init__(master)
         self._master = master
         self._app = app
+        self._active = False
         self._row = row
         self._column = column
         self._puzzle_name = puzzle_name
@@ -73,5 +75,16 @@ class PuzzleCell:
         self._puzzle_sigil = sigil_name
         self._puzzle_sigil_widget.set_sigil(sigil_name)
 
+    def get_sigil(self) -> str:
+        return self._puzzle_sigil
 
+    def set_active(self, active: bool) -> None:
+        self._active = active
+        color: str
+        color = ("#AAAAFF" if self._active else self._master.cget("bg")) # type: ignore
+        self._frame["bg"] = color
+        self._puzzle_label["bg"] = color
+        # FIXME: KLUDGE - violates encapsulation
+        self._puzzle_sigil_widget._sigil_frame["bg"] = color
+        self._puzzle_sigil_widget._sigil_icon["bg"] = color
 
