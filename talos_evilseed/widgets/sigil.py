@@ -13,11 +13,11 @@ from tkinter import Frame
 
 COLOR_MAP: Dict[str, str] = {
     # Some of these look kinda bad, but colourblind people do exist
-    "D": "#00FF00",
-    "M": "#FFFF99",
+    "D": "#6B8E23",
+    "M": "#FFD700",
     "N": "#CC0000",
-    "E": "#AAAAAA",
-    "*": "#FFCC00",
+    "E": "#A9A9A9",
+    "*": "#FFA500",
 }
 
 SHAPE_MAP: Dict[str, List[Tuple[int, int]]] = {
