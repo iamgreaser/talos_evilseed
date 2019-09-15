@@ -6,6 +6,7 @@ import random
 from typing import Any
 from typing import Dict
 from typing import Generator
+from typing import List
 from typing import IO
 
 from talos_evilseed import schema
@@ -95,10 +96,10 @@ class SeedState:
         fp.write(json.dumps(data))
 
     def export(self) -> None:
-        self._export_to_fname(fname=self._fname)
+        self._export_to_fname(fname=f"{self._fname}.lua")
 
     def _export_to_fname(self, *, fname: str) -> None:
-        print(f"Exporting {fname!r}.(cfg|lua)")
+        print(f"Exporting {fname!r}")
         code6_1 = random.randint(4,9)
         code6_2 = random.randint(4,9)
         code6_3 = random.randint(4,9)
@@ -110,7 +111,7 @@ class SeedState:
             "Randomizer_Mobius": None,
             "Randomizer_Moody": None,
             "Randomizer_Scavenger": None,
-            "Randomizer_Seed": 420.69,
+            "Randomizer_Seed": -42069,
             "PaintItemSeed": random.randint(0,(1<<31)-1),
             "Code_Floor4": random.randint(0,999),
             "Code_Floor5": random.randint(0,999),
@@ -139,29 +140,31 @@ class SeedState:
         # TODO: Randomizer_LastShape
         # TODO: Randomizer_ScavengerEnding
 
-        with open(f"{fname}.cfg", "w") as cfgfp:
-            # FIXME this really isn't clean
-            cfgfp.write("prj_strCustomOccasion={\"dofile([=[%s.lua]=]\')\"}\n" % (fname,))
-            cfgfp.write("ser_strBanList={\"dofile([=[%s.lua]=])\"}\n" % (fname,))
+        with open(fname, "w") as luafp:
+            for base_key in ["prj_strCustomOccasion", "ser_strBanList",]:
+                luafp.write(f"{base_key}=[===[")
+                luafp.write("Randomizer_AutoStart={")
+                sl: List[str] = []
+                for key, rawvalue in data.items():
+                    if isinstance(rawvalue, str):
+                        escvalue: str = rawvalue.replace("\\", "\\\\").replace("'", "\\'")
+                        svalue: str = f"'{escvalue}'"
+                    elif isinstance(rawvalue, float):
+                        svalue = f"{rawvalue:f}"
+                    elif isinstance(rawvalue, int):
+                        svalue = f"{rawvalue:d}"
+                    elif rawvalue is True:
+                        svalue = f"1"
+                    elif rawvalue is False:
+                        svalue = f"0"
+                    elif rawvalue is None:
+                        svalue = f"0"
+                    else:
+                        raise Exception(f"TODO: make Lua type for {rawvalue!r} ({type(rawvalue)!r})")
 
-        with open(f"{fname}.lua", "w") as luafp:
-            luafp.write("Randomizer_AutoStart={\n")
-            for key, rawvalue in data.items():
-                if isinstance(rawvalue, str):
-                    svalue: str = f"[=[{rawvalue}]=]"
-                elif isinstance(rawvalue, float):
-                    svalue = f"{rawvalue:f}"
-                elif isinstance(rawvalue, int):
-                    svalue = f"{rawvalue:d}"
-                elif rawvalue is True:
-                    svalue = f"true"
-                elif rawvalue is False:
-                    svalue = f"false"
-                elif rawvalue is None:
-                    svalue = f"nil"
-                else:
-                    raise Exception(f"TODO: make Lua type for {rawvalue!r} ({type(rawvalue)!r})")
-
-                luafp.write(f'["{key}"]={svalue},' + "\n")
-            luafp.write("}\n")
+                    sl.append(f"'{key}'={svalue}")
+                s: str = ",".join(sl)
+                luafp.write(s)
+                luafp.write("}")
+                luafp.write("]===]\n")
 
