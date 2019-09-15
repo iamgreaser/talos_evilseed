@@ -111,7 +111,7 @@ class SeedState:
             "Randomizer_Mobius": 0,
             "Randomizer_Moody": 0,
             "Randomizer_Scavenger": 0,
-            "Randomizer_Seed": -42069,
+            "Randomizer_Seed": 42069,
             "PaintItemSeed": random.randint(0,(1<<31)-1),
             "Code_Floor4": random.randint(0,999),
             "Code_Floor5": random.randint(0,999),
