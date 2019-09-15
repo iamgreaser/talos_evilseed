@@ -17,7 +17,7 @@ COLOR_MAP: Dict[str, str] = {
     "M": "#FFFF99",
     "N": "#CC0000",
     "E": "#AAAAAA",
-    "*": "#FFFF99",
+    "*": "#FFCC00",
 }
 
 SHAPE_MAP: Dict[str, List[Tuple[int, int]]] = {
