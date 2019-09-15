@@ -33,16 +33,21 @@ class PuzzleRow:
         self._level_name = level_name
         self._puzzles = level
         self._row = row
-        self._level_label: Label = Label(master, text=self._level_name[:2].replace("S","*"))
+
+        self._level_label: Label = Label(
+            master,
+            text="\n"+self._level_name[:2].replace("S","*")+"\n"
+        )
         self._level_label.grid(
             sticky=tkinter.W+tkinter.E+tkinter.N+tkinter.S,
             column=0,
             row=self._row,
         )
+
         self._portal_label: Label = Label(
             master,
             text=self._level_name[:2].replace("S","*"),
-            relief=tkinter.RAISED,
+            relief=(tkinter.RAISED if self._level_name != "Nexus" else tkinter.FLAT),
             borderwidth=2,
         )
         self._portal_label.grid(

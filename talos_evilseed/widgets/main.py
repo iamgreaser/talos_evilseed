@@ -40,13 +40,13 @@ class MainWindow(Frame):
         self._puzzle_row_frames: List[Frame] = []
 
         MATCHERS: Sequence[Callable[[str], bool]] = [
-            lambda name: name.startswith("A") or name.startswith("B"),
-            lambda name: name.startswith("C") or name.startswith("N"),
+            lambda name: (name.startswith("A") or name.startswith("B")) and name != "ADev",
+            lambda name: (name.startswith("C") or name.startswith("N")) or  name == "ADev",
         ]
 
         for frame_idx, f_matcher in enumerate(MATCHERS):
             frame = Frame(self)
-            frame.grid(row=0, column=frame_idx, sticky=tkinter.N)
+            frame.grid(row=0, padx=20, column=frame_idx, sticky=tkinter.N)
             self._puzzle_row_frames.append(frame)
 
             puzzle_rows = [
@@ -58,7 +58,7 @@ class MainWindow(Frame):
                     row=i,
                 )
                 for i, (level_name, level,) in enumerate(sorted(list(schema.PUZZLES.items())))
-                if level_name != "ADev" and f_matcher(level_name)
+                if f_matcher(level_name)
             ]
 
             self._puzzle_row_groups.append(puzzle_rows)
