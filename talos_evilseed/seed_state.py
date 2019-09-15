@@ -2,6 +2,7 @@
 
 from contextlib import contextmanager
 import json
+import random
 from typing import Any
 from typing import Dict
 from typing import Generator
@@ -79,6 +80,7 @@ class SeedState:
 
     def _sync(self) -> None:
         if not self._has_active_atomic:
+            self.export()
             self._save_to_fname(fname=self._fname)
 
     def _save_to_fname(self, *, fname: str) -> None:
@@ -91,3 +93,75 @@ class SeedState:
             "puzzle_to_sigil_map": self._puzzle_to_sigil_map,
         }
         fp.write(json.dumps(data))
+
+    def export(self) -> None:
+        self._export_to_fname(fname=self._fname)
+
+    def _export_to_fname(self, *, fname: str) -> None:
+        print(f"Exporting {fname!r}.(cfg|lua)")
+        code6_1 = random.randint(4,9)
+        code6_2 = random.randint(4,9)
+        code6_3 = random.randint(4,9)
+
+        data: Dict[str, Any] = {
+            "Randomizer_ExtraSeed": random.randint(0,(1<<31)-1),
+            "Randomizer_Generated": 1,
+            "Randomizer_Mode": "Default",
+            "Randomizer_Mobius": None,
+            "Randomizer_Moody": None,
+            "Randomizer_Scavenger": None,
+            "Randomizer_Seed": 420.69,
+            "PaintItemSeed": random.randint(0,(1<<31)-1),
+            "Code_Floor4": random.randint(0,999),
+            "Code_Floor5": random.randint(0,999),
+            "Code_Floor61": code6_1,
+            "Code_Floor62": code6_2,
+            "Code_Floor63": code6_3,
+            "Code_Floor6": code6_1*100 + code6_2*10 + code6_3*1,
+            "Code_Floor6DigitSeen1": 1,
+            "Code_Floor6DigitSeen2": 1,
+            "Code_Floor6DigitSeen3": 1,
+        }
+
+        # Random sigils
+        for idx, name in enumerate(schema.PORTAL_ORDER):
+            for level_name, level in schema.PUZZLES.items():
+                for puzzle_name, puzzle in level.items():
+                    data[puzzle["talosProgress"]] = self._puzzle_to_sigil_map[level_name][puzzle_name]
+
+        # Random portals
+        # TODO: add support for this
+        for idx, name in enumerate(schema.PORTAL_ORDER):
+            data[name] = idx+1
+
+        # TODO: Randomizer_Hints
+        # TODO: Randomizer_LastColour
+        # TODO: Randomizer_LastShape
+        # TODO: Randomizer_ScavengerEnding
+
+        with open(f"{fname}.cfg", "w") as cfgfp:
+            # FIXME this really isn't clean
+            cfgfp.write("prj_strCustomOccasion={\"dofile([=[%s.lua]=]\')\"}\n" % (fname,))
+            cfgfp.write("ser_strBanList={\"dofile([=[%s.lua]=])\"}\n" % (fname,))
+
+        with open(f"{fname}.lua", "w") as luafp:
+            luafp.write("Randomizer_AutoStart={\n")
+            for key, rawvalue in data.items():
+                if isinstance(rawvalue, str):
+                    svalue: str = f"[=[{rawvalue}]=]"
+                elif isinstance(rawvalue, float):
+                    svalue = f"{rawvalue:f}"
+                elif isinstance(rawvalue, int):
+                    svalue = f"{rawvalue:d}"
+                elif rawvalue is True:
+                    svalue = f"true"
+                elif rawvalue is False:
+                    svalue = f"false"
+                elif rawvalue is None:
+                    svalue = f"nil"
+                else:
+                    raise Exception(f"TODO: make Lua type for {rawvalue!r} ({type(rawvalue)!r})")
+
+                luafp.write(f'["{key}"]={svalue},' + "\n")
+            luafp.write("}\n")
+

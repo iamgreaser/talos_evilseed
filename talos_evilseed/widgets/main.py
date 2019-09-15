@@ -22,7 +22,6 @@ class MainWindow(Frame):
         "_app",
         "_ctrl_frame",
         "_ctrl_new_button",
-        "_ctrl_export_button",
         "_master",
         "_puzzle_row_groups",
         "_puzzle_row_frames",
@@ -82,10 +81,4 @@ class MainWindow(Frame):
             text="New seed",
         )
         self._ctrl_new_button.grid(column=0, row=0, ipadx=20, ipady=10)
-
-        self._ctrl_export_button = Button(
-            self._control_pane_frame,
-            text="Export",
-        )
-        self._ctrl_export_button.grid(column=2, row=0, ipadx=20, ipady=10)
 

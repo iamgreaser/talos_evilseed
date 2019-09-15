@@ -1,5 +1,7 @@
 # Program output
 *.evilseed
+*.evilseed.cfg
+*.evilseed.lua
 
 # For dev purposes
 _norepo/

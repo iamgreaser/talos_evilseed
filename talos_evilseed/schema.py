@@ -1,6 +1,7 @@
 # vim: set sts=4 sw=4 et :
 
 from typing import Dict
+from typing import Sequence
 
 
 ARRANGERS = {
@@ -204,245 +205,201 @@ PUZZLES: Dict[str, Dict[str, Dict[str, str]]] = {
     "A1": {
         #"talosProgress": "A1-Portal",
         "PaSL": {
-            "full": "Poking a Sleeping Lion",
             "sigil": "DI1",
-            #"talosProgress": "A1-PaSL"
+            "talosProgress": "A1-PaSL"
         },
         "StBP": {
-            "full": "Striding the Beaten Path",
             "sigil": "DJ1",
-            #"talosProgress": "A1-StBP"
+            "talosProgress": "A1-StBP"
         },
         "Outnumbered": {
-            "full": "Outnumbered",
             "sigil": "DJ2",
-            #"talosProgress": "A1-Outnumbered"
+            "talosProgress": "A1-Outnumbered"
         },
         "OtToU": {
-            "full": "Only the Two of Us",
             "sigil": "DJ3",
-            #"talosProgress": "A1-OtToU"
+            "talosProgress": "A1-OtToU"
         },
         "ASOoR": {
-            "full": "A Switch Out of Reach",
             "sigil": "DZ1",
-            #"talosProgress": "A1-ASOoR"
+            "talosProgress": "A1-ASOoR"
         },
         "Trio": {
-            "full": "Trio Bombasticus",
             "sigil": "ML1",
-            #"talosProgress": "A1-Trio"
+            "talosProgress": "A1-Trio"
         },
         "Peephole": {
-            "full": "Peephole",
             "sigil": "MT1",
-            #"talosProgress": "A1-Peephole"
+            "talosProgress": "A1-Peephole"
         },
         "Star": {
-            "full": "A1 Star",
             "sigil": "**5",
-            #"talosProgress": "A1-Star"
+            "talosProgress": "A1-Star"
         }
     },
     "A2": {
         #"talosProgress": "A2-Portal",
         "Guards": {
-            "full": "The Guards Must Be Crazy",
             "sigil": "DL1",
-            #"talosProgress": "A2-Guards"
+            "talosProgress": "A2-Guards"
         },
         "HoW": {
-            "full": "Hall of Windows",
             "sigil": "DZ2",
-            #"talosProgress": "A2-HoW"
+            "talosProgress": "A2-HoW"
         },
         "SM": {
-            "full": "Suicide Mission",
             "sigil": "ML2",
-            #"talosProgress": "A2-SM"
+            "talosProgress": "A2-SM"
         },
         "Star": {
-            "full": "A2 Star",
             "sigil": "**2",
-            #"talosProgress": "A2-Star"
+            "talosProgress": "A2-Star"
         }
     },
     "A3": {
         #"talosProgress": "A3-Portal",
         "SfL": {
-            "full": "Stashed for Later",
             "sigil": "DZ3",
-            #"talosProgress": "A3-SfL"
+            "talosProgress": "A3-SfL"
         },
         "ABTU": {
-            "full": "A Bit Tied Up",
             "sigil": "MT2",
-            #"talosProgress": "A3-ABTU"
+            "talosProgress": "A3-ABTU"
         },
         "ABTUStar": {
-            "full": "A Bit Tied Up Star",
             "sigil": "**1",
-            #"talosProgress": "A3-ABTUStar"
+            "talosProgress": "A3-ABTUStar"
         },
         "LMUStK": {
-            "full": "Locked Me Up, Swallowed the Key",
             "sigil": "MT3",
-            #"talosProgress": "A3-LMUStK"
+            "talosProgress": "A3-LMUStK"
         },
         "AEP": {
-            "full": "An Escalating Problem",
             "sigil": "NL1",
-            #"talosProgress": "A3-AEP"
+            "talosProgress": "A3-AEP"
         },
         "Clock": {
-            "full": "Clock Star",
             "sigil": "**3",
-            #"talosProgress": "A3-Clock"
+            "talosProgress": "A3-Clock"
         }
     },
     "A4": {
         #"talosProgress": "A4-Portal",
         "BiO": {
-            "full": "Branch it Out",
             "sigil": "MT4",
-            #"talosProgress": "A4-BiO"
+            "talosProgress": "A4-BiO"
         },
         "AAT": {
-            "full": "Above All That...",
             "sigil": "MT5",
-            #"talosProgress": "A4-AAT"
+            "talosProgress": "A4-AAT"
         },
         "PiF": {
-            "full": "Push it Further",
             "sigil": "MZ1",
-            #"talosProgress": "A4-PiF"
+            "talosProgress": "A4-PiF"
         },
         "Star": {
-            "full": "A4 Star",
             "sigil": "**4",
-            #"talosProgress": "A4-Star"
+            "talosProgress": "A4-Star"
         },
         "DCtS": {
-            "full": "Don't Cross the Streams!",
             "sigil": "MZ2",
-            #"talosProgress": "A4-DCtS"
+            "talosProgress": "A4-DCtS"
         }
     },
     "A5": {
         #"talosProgress": "A5-Portal",
         "TwoBoxes": {
-            "full": "Things to Do With Two Boxes",
             "sigil": "DI2",
-            #"talosProgress": "A5-TwoBoxes"
+            "talosProgress": "A5-TwoBoxes"
         },
         "TwoBoxesStar": {
-            "full": "Things to Do With Two Boxes Star",
             "sigil": "**7",
-            #"talosProgress": "A5-TwoBoxesStar"
+            "talosProgress": "A5-TwoBoxesStar"
         },
         "YKYMCtS": {
-            "full": "You Know You Mustn't Cross the Streams",
             "sigil": "DL2",
-            #"talosProgress": "A5-YKYMCtS"
+            "talosProgress": "A5-YKYMCtS"
         },
         "GOtF": {
-            "full": "Going Over the Fence",
             "sigil": "DT1",
-            #"talosProgress": "A5-GOtF"
+            "talosProgress": "A5-GOtF"
         },
         "OLB": {
-            "full": "One Little Buzzer",
             "sigil": "DT2",
-            #"talosProgress": "A5-OLB"
+            "talosProgress": "A5-OLB"
         },
         "FC": {
-            "full": "Friendly Crossfire",
             "sigil": "NZ1",
-            #"talosProgress": "A5-FC"
+            "talosProgress": "A5-FC"
         },
         "FCStar": {
-            "full": "Friendly Crossfire Star",
             "sigil": "**6",
-            #"talosProgress": "A5-FCStar"
+            "talosProgress": "A5-FCStar"
         }
     },
     "A6": {
         #"talosProgress": "A6-Portal",
         "Mindfield": {
-            "full": "Mobile Mindfield",
             "sigil": "DZ4",
-            #"talosProgress": "A6-Mindfield"
+            "talosProgress": "A6-Mindfield"
         },
         "Deception": {
-            "full": "Deception",
             "sigil": "NL2",
-            #"talosProgress": "A6-Deception"
+            "talosProgress": "A6-Deception"
         },
         "ADTF": {
-            "full": "A Door Too Far",
             "sigil": "NL3",
-            #"talosProgress": "A6-ADTF"
+            "talosProgress": "A6-ADTF"
         },
         "Bichromatic": {
-            "full": "Bichromatic Entanglement",
             "sigil": "NZ2",
-            #"talosProgress": "A6-Bichromatic"
+            "talosProgress": "A6-Bichromatic"
         },
         "Star": {
-            "full": "A6 Star",
             "sigil": "**8",
-            #"talosProgress": "A6-Star"
+            "talosProgress": "A6-Star"
         }
     },
     "A7": {
         #"talosProgress": "A7-Portal",
         "LfI": {
-            "full": "Locked from Inside",
             "sigil": "DL3",
-            #"talosProgress": "A7-LfI"
+            "talosProgress": "A7-LfI"
         },
         "TI": {
-            "full": "Trapped Inside",
             "sigil": "DT3",
-            #"talosProgress": "A7-TI"
+            "talosProgress": "A7-TI"
         },
         "TPLB": {
-            "full": "Two Pesky Little Buzzers",
             "sigil": "NL4",
-            #"talosProgress": "A7-TPLB"
+            "talosProgress": "A7-TPLB"
         },
         "Star": {
-            "full": "A7 Star",
             "sigil": "**9",
-            #"talosProgress": "A7-Star"
+            "talosProgress": "A7-Star"
         },
         "WiaL": {
-            "full": "Windows into a Labyrinth",
             "sigil": "NO1",
-            #"talosProgress": "A7-WiaL"
+            "talosProgress": "A7-WiaL"
         },
         "PW": {
-            "full": "Pinhole Windows",
             "sigil": "NT1",
-            #"talosProgress": "A7-PW"
+            "talosProgress": "A7-PW"
         }
     },
     "AStar": {
         #"talosProgress": "A*-Portal",
         "JfW": {
-            "full": "Jammed from Within",
             "sigil": "EL1",
-            #"talosProgress": "A*-JfW"
+            "talosProgress": "A*-JfW"
         },
         "NW": {
-            "full": "Nerve-Wrecker",
             "sigil": "ES1",
-            #"talosProgress": "A*-NW"
+            "talosProgress": "A*-NW"
         },
         "DDM": {
-            "full": "Dumb Dumb Mine",
             "sigil": "ES3",
-            #"talosProgress": "A*-DDM"
+            "talosProgress": "A*-DDM"
         }
     },
     "ADev": {
@@ -451,480 +408,395 @@ PUZZLES: Dict[str, Dict[str, Dict[str, str]]] = {
     "B1": {
         #"talosProgress": "B1-Portal",
         "WtaD": {
-            "full": "Window through a Door",
             "sigil": "ML3",
-            #"talosProgress": "B1-WtaD"
+            "talosProgress": "B1-WtaD"
         },
         "TW": {
-            "full": "Third Wheel",
             "sigil": "MS1",
-            #"talosProgress": "B1-TW"
+            "talosProgress": "B1-TW"
         },
         "OtF": {
-            "full": "Over the Fence",
             "sigil": "MT6",
-            #"talosProgress": "B1-OtF"
+            "talosProgress": "B1-OtF"
         },
         "RoD": {
-            "full": "Road of Death",
             "sigil": "MT7",
-            #"talosProgress": "B1-RoD"
+            "talosProgress": "B1-RoD"
         },
         "SaaS": {
-            "full": "Something about a Star",
             "sigil": "MZ3",
-            #"talosProgress": "B1-SaaS"
+            "talosProgress": "B1-SaaS"
         },
         "Star": {
-            "full": "B1 Star",
             "sigil": "**10",
-            #"talosProgress": "B1-Star"
+            "talosProgress": "B1-Star"
         }
     },
     "B2": {
         #"talosProgress": "B2-Portal",
         "Tomb": {
-            "full": "The Tomb",
             "sigil": "MS2",
-            #"talosProgress": "B2-Tomb"
+            "talosProgress": "B2-Tomb"
         },
         "Star": {
-            "full": "B2 Star",
             "sigil": "**11",
-            #"talosProgress": "B2-Star"
+            "talosProgress": "B2-Star"
         },
         "MoTM": {
-            "full": "Man on The Moon",
             "sigil": "MT8",
-            #"talosProgress": "B2-MoTM"
+            "talosProgress": "B2-MoTM"
         },
         "Moonshot": {
-            "full": "Moonshot",
             "sigil": "MZ4",
-            #"talosProgress": "B2-Moonshot"
+            "talosProgress": "B2-Moonshot"
         },
         "HG": {
-            "full": "Higher Ground",
             "sigil": "NL5",
-            #"talosProgress": "B2-HG"
+            "talosProgress": "B2-HG"
         }
     },
     "B3": {
         #"talosProgress": "B3-Portal",
         "BA": {
-            "full": "Blown Away",
             "sigil": "MJ1",
-            #"talosProgress": "B3-BA"
+            "talosProgress": "B3-BA"
         },
         "Star": {
-            "full": "B3 Star",
             "sigil": "**12",
-            #"talosProgress": "B3-Star"
+            "talosProgress": "B3-Star"
         },
         "Sunshot": {
-            "full": "Sunshot",
             "sigil": "MT9",
-            #"talosProgress": "B3-Sunshot"
+            "talosProgress": "B3-Sunshot"
         },
         "EN": {
-            "full": "Eagle's Nest",
             "sigil": "NL6",
-            #"talosProgress": "B3-EN"
+            "talosProgress": "B3-EN"
         },
         "Whoosh": {
-            "full": "Whoosh!",
             "sigil": "NT2",
-            #"talosProgress": "B3-Whoosh"
+            "talosProgress": "B3-Whoosh"
         }
     },
     "B4": {
         #"talosProgress": "B4-Portal",
         "SHT": {
-            "full": "Self-Help Tutorial",
             "sigil": "DJ4",
-            #"talosProgress": "B4-SHT"
+            "talosProgress": "B4-SHT"
         },
         "DP": {
-            "full": "Double Plate",
             "sigil": "DT4",
-            #"talosProgress": "B4-DP"
+            "talosProgress": "B4-DP"
         },
         "TRA": {
-            "full": "The Right Angle",
             "sigil": "NT3",
-            #"talosProgress": "B4-TRA"
+            "talosProgress": "B4-TRA"
         },
         "TRAStar": {
-            "full": "TRA Star",
             "sigil": "**13",
-            #"talosProgress": "B4-TRAStar"
+            "talosProgress": "B4-TRAStar"
         },
         "RPS": {
-            "full": "Redundant Power Supply",
             "sigil": "NT4",
-            #"talosProgress": "B4-RPS"
+            "talosProgress": "B4-RPS"
         },
         "ABUH": {
-            "full": "A Box Up High",
             "sigil": "NL7",
-            #"talosProgress": "B4-ABUH"
+            "talosProgress": "B4-ABUH"
         },
         "WAtC": {
-            "full": "Wrap Around the Corner",
             "sigil": "NL8",
-            #"talosProgress": "B4-WAtC"
+            "talosProgress": "B4-WAtC"
         },
         "Sphinx": {
-            "full": "Sphinx Star",
             "sigil": "**24",
-            #"talosProgress": "B4-Sphinx"
+            "talosProgress": "B4-Sphinx"
         }
     },
     "B5": {
         #"talosProgress": "B5-Portal",
         "SES": {
-            "full": "Slightly Elevated Sigil",
             "sigil": "DJ5",
-            #"talosProgress": "B5-SES"
+            "talosProgress": "B5-SES"
         },
         "Plates": {
-            "full": "Alley of the Pressure Plates",
             "sigil": "NI1",
-            #"talosProgress": "B5-Plates"
+            "talosProgress": "B5-Plates"
         },
         "MMaOTJ": {
-            "full": "Me, Myself and Our Two Jammers",
             "sigil": "NL9",
-            #"talosProgress": "B5-MMaOTJ"
+            "talosProgress": "B5-MMaOTJ"
         },
         "BtIC": {
-            "full": "Behind the Iron Curtain",
             "sigil": "NS1",
-            #"talosProgress": "B5-BtIC"
+            "talosProgress": "B5-BtIC"
         },
         "Chambers": {
-            "full": "The Four Chambers of Flying",
             "sigil": "NZ3",
-            #"talosProgress": "B5-Chambers"
+            "talosProgress": "B5-Chambers"
         },
         "Obelisk": {
-            "full": "Obelisk Star",
             "sigil": "**14",
-            #"talosProgress": "B5-Obelisk"
+            "talosProgress": "B5-Obelisk"
         }
     },
     "B6": {
         #"talosProgress": "B6-Portal",
         "Crisscross": {
-            "full": "Crisscross Conundrum",
             "sigil": "ML4",
-            #"talosProgress": "B6-Crisscross"
+            "talosProgress": "B6-Crisscross"
         },
         "JDaW": {
-            "full": "Just Doors and Windows",
             "sigil": "MT10",
-            #"talosProgress": "B6-JDaW"
+            "talosProgress": "B6-JDaW"
         },
         "EA": {
-            "full": "Egyptian Arcade",
             "sigil": "NI2",
-            #"talosProgress": "B6-EA"
+            "talosProgress": "B6-EA"
         }
     },
     "B7": {
         #"talosProgress": "B7-Portal",
         "AFaF": {
-            "full": "A Fan across Forever",
             "sigil": "NI3",
-            #"talosProgress": "B7-AFaF"
+            "talosProgress": "B7-AFaF"
         },
         "WLJ": {
-            "full": "Whole Lotta Jamming",
             "sigil": "NJ1",
-            #"talosProgress": "B7-WLJ"
+            "talosProgress": "B7-WLJ"
         },
         "BSbS": {
-            "full": "Bouncing Side by Side",
             "sigil": "MI1",
-            #"talosProgress": "B7-BSbS"
+            "talosProgress": "B7-BSbS"
         },
         "BSbSStar": {
-            "full": "Bouncing Side by Side Star",
             "sigil": "**16",
-            #"talosProgress": "B7-BSbSStar"
+            "talosProgress": "B7-BSbSStar"
         },
         "BLoM": {
-            "full": "Big Lump of Mine",
             "sigil": "MO1",
-            #"talosProgress": "B7-BLoM"
+            "talosProgress": "B7-BLoM"
         },
         "Pyramid": {
-            "full": "Pyramid Star",
             "sigil": "**15",
-            #"talosProgress": "B7-Pyramid"
+            "talosProgress": "B7-Pyramid"
         }
     },
     "BStar": {
         #"talosProgress": "B*-Portal",
         "MGR": {
-            "full": "Merry Go 'Round",
             "sigil": "EL2",
-            #"talosProgress": "B*-MGR"
+            "talosProgress": "B*-MGR"
         },
         "CC": {
-            "full": "Cat's Cradle",
             "sigil": "ES2",
-            #"talosProgress": "B*-CC"
+            "talosProgress": "B*-CC"
         },
         "Peekaboo": {
-            "full": "Peekaboo!",
             "sigil": "EL3",
-            #"talosProgress": "B*-Peekaboo"
+            "talosProgress": "B*-Peekaboo"
         }
     },
     "C1": {
         #"talosProgress": "C1-Portal",
         "Conservatory": {
-            "full": "The Conservatory",
             "sigil": "NI4",
-            #"talosProgress": "C1-Conservatory"
+            "talosProgress": "C1-Conservatory"
         },
         "MIA": {
-            "full": "Multiply Impossible Ascension",
             "sigil": "NJ2",
-            #"talosProgress": "C1-MIA"
+            "talosProgress": "C1-MIA"
         },
         "Labyrinth": {
-            "full": "Labyrinth",
             "sigil": "NT5",
-            #"talosProgress": "C1-Labyrinth"
+            "talosProgress": "C1-Labyrinth"
         },
         "Blowback": {
-            "full": "Blowback",
             "sigil": "NZ4",
-            #"talosProgress": "C1-Blowback"
+            "talosProgress": "C1-Blowback"
         },
         "Star": {
-            "full": "C1 Star",
             "sigil": "**17",
-            #"talosProgress": "C1-Star"
+            "talosProgress": "C1-Star"
         }
     },
     "C2": {
         #"talosProgress": "C2-Portal",
         "ADaaF": {
-            "full": "A Ditch and a Fence",
             "sigil": "NO2",
-            #"talosProgress": "C2-ADaaF"
+            "talosProgress": "C2-ADaaF"
         },
         "Rapunzel": {
-            "full": "Rapunzel",
             "sigil": "NS2",
-            #"talosProgress": "C2-Rapunzel"
+            "talosProgress": "C2-Rapunzel"
         },
         "Cemetery": {
-            "full": "Cemetery",
             "sigil": "NT6",
-            #"talosProgress": "C2-Cemetery"
+            "talosProgress": "C2-Cemetery"
         },
         "TSW": {
-            "full": "The Short Wall",
             "sigil": "NZ5",
-            #"talosProgress": "C2-TSW"
+            "talosProgress": "C2-TSW"
         },
         "Star": {
-            "full": "C2 Star",
             "sigil": "**18",
-            #"talosProgress": "C2-Star"
+            "talosProgress": "C2-Star"
         }
     },
     "C3": {
         #"talosProgress": "C3-Portal",
         "TLCaaF": {
-            "full": "Three Little Connectors... and a Fan",
             "sigil": "NO3",
-            #"talosProgress": "C3-TLCaaF"
+            "talosProgress": "C3-TLCaaF"
         },
         "JQ": {
-            "full": "Jammer Quarantine",
             "sigil": "NJ3",
-            #"talosProgress": "C3-JQ"
+            "talosProgress": "C3-JQ"
         },
         "BSLS": {
-            "full": "Big Stairs, Little Stairs",
             "sigil": "NT7",
-            #"talosProgress": "C3-BSLS"
+            "talosProgress": "C3-BSLS"
         },
         "Weathertop": {
-            "full": "Weathertop",
             "sigil": "NZ6",
-            #"talosProgress": "C3-Weathertop"
+            "talosProgress": "C3-Weathertop"
         },
         "Star": {
-            "full": "C3 Star",
             "sigil": "**19",
-            #"talosProgress": "C3-Star"
+            "talosProgress": "C3-Star"
         }
     },
     "C4": {
         #"talosProgress": "C4-Portal",
         "Armory": {
-            "full": "Armory",
             "sigil": "NI5",
-            #"talosProgress": "C4-Armory"
+            "talosProgress": "C4-Armory"
         },
         "Oubliette": {
-            "full": "Oubliette",
             "sigil": "NS3",
-            #"talosProgress": "C4-Oubliette"
+            "talosProgress": "C4-Oubliette"
         },
         "Stables": {
-            "full": "Stables",
             "sigil": "NT8",
-            #"talosProgress": "C4-Stables"
+            "talosProgress": "C4-Stables"
         },
         "OublietteStar": {
-            "full": "Oubliette Star",
             "sigil": "**20",
-            #"talosProgress": "C4-OublietteStar"
+            "talosProgress": "C4-OublietteStar"
         },
         "ThroneRoom": {
-            "full": "Throne Room",
             "sigil": "NT9",
-            #"talosProgress": "C4-TR"
+            "talosProgress": "C4-TR"
         },
         "ThroneRoomStar": {
-            "full": "Throne Room Star",
             "sigil": "**21",
-            #"talosProgress": "C4-TRStar"
+            "talosProgress": "C4-TRStar"
         }
     },
     "C5": {
         #"talosProgress": "C5-Portal",
         "TimeFlies": {
-            "full": "Time Flies",
             "sigil": "NI6",
-            #"talosProgress": "C5-TF"
+            "talosProgress": "C5-TF"
         },
         "TFStar": {
-            "full": "Time Flies Star",
             "sigil": "**23",
-            #"talosProgress": "C5-TFStar"
+            "talosProgress": "C5-TFStar"
         },
         "TimeCrawls": {
-            "full": "Time Crawls",
             "sigil": "NO4",
-            #"talosProgress": "C5-TC"
+            "talosProgress": "C5-TC"
         },
         "Dumbwaiter": {
-            "full": "Dumbwaiter",
             "sigil": "NO5",
-            #"talosProgress": "C5-Dumbwaiter"
+            "talosProgress": "C5-Dumbwaiter"
         },
         "DumbwaiterStar": {
-            "full": "Dumbwaiter Star",
             "sigil": "**22",
-            #"talosProgress": "C5-DumbwaiterStar"
+            "talosProgress": "C5-DumbwaiterStar"
         },
         "UCaJ": {
-            "full": "Up Close and Jammed",
             "sigil": "NT10",
-            #"talosProgress": "C5-UCaJ"
+            "talosProgress": "C5-UCaJ"
         },
         "UCaJStar": {
-            "full": "Up Close and Jammed Star",
             "sigil": "**27",
-            #"talosProgress": "C5-UCaJStar"
+            "talosProgress": "C5-UCaJStar"
         }
     },
     "C6": {
         #"talosProgress": "C6-Portal",
         "TSDoR": {
-            "full": "The Seven Doors of Recording",
             "sigil": "NO6",
-            #"talosProgress": "C6-TSDoR"
+            "talosProgress": "C6-TSDoR"
         },
         "Circumlocution": {
-            "full": "Circumlocution",
             "sigil": "NJ4",
-            #"talosProgress": "C6-Circumlocution"
+            "talosProgress": "C6-Circumlocution"
         },
         "TWS": {
-            "full": "Two Way Street",
             "sigil": "NS4",
-            #"talosProgress": "C6-TWS"
+            "talosProgress": "C6-TWS"
         },
         "Star": {
-            "full": "C6 Star",
             "sigil": "**29",
-            #"talosProgress": "C6-Star"
+            "talosProgress": "C6-Star"
         }
     },
     "C7": {
         #"talosProgress": "C7-Portal",
         "CP": {
-            "full": "Carrier Pidgeons",
             "sigil": "NO7",
-            #"talosProgress": "C7-CP"
+            "talosProgress": "C7-CP"
         },
         "DMS": {
-            "full": "Dead Man's Switch",
             "sigil": "NL10",
-            #"talosProgress": "C7-DMS"
+            "talosProgress": "C7-DMS"
         },
         "PB": {
-            "full": "Prison Break",
             "sigil": "NT11",
-            #"talosProgress": "C7-PB"
+            "talosProgress": "C7-PB"
         },
         "CCA": {
-            "full": "Crisscross Conundrum Advanced",
             "sigil": "NT12",
-            #"talosProgress": "C7-CCA"
+            "talosProgress": "C7-CCA"
         },
         "Star": {
-            "full": "C7 Star",
             "sigil": "**30",
-            #"talosProgress": "C7-Star"
+            "talosProgress": "C7-Star"
         }
     },
     "CStar": {
         #"talosProgress": "C*-Portal",
         "UG": {
-            "full": "Unreachable Garden",
             "sigil": "EL4",
-            #"talosProgress": "C*-UG"
+            "talosProgress": "C*-UG"
         },
         "Nexus": {
-            "full": "Nexus",
             "sigil": "EO1",
-            #"talosProgress": "C*-Nexus"
+            "talosProgress": "C*-Nexus"
         },
         "Cobweb": {
-            "full": "Cobweb",
             "sigil": "ES4",
-            #"talosProgress": "C*-Cobweb"
+            "talosProgress": "C*-Cobweb"
         }
     },
     "CMessenger": {
         #"talosProgress": "CM-Portal",
         "Star": {
-            "full": "C Messenger Star",
             "sigil": "**26",
-            #"talosProgress": "CM-Star"
+            "talosProgress": "CM-Star"
         }
     },
     "Nexus": {
         #"talosProgress": "",
         "F0": {
-            "full": "Floor 0 Star",
             "sigil": "**28",
-            #"talosProgress": "F0-Star"
+            "talosProgress": "F0-Star"
         },
         "F3": {
-            "full": "Floor 3 Star",
             "sigil": "**25",
-            #"talosProgress": "F3-Star"
+            "talosProgress": "F3-Star"
         }
     }
 }
@@ -957,3 +829,60 @@ ALL_TETROS = [
     "NZ1", "NZ2", "NZ3", "NZ4", "NZ5", "NZ6",
 ]
 
+LEVEL_TO_PORTAL: Dict[str, str] = {
+    "A1": "A1-Portal",
+    "A2": "A2-Portal",
+    "A3": "A3-Portal",
+    "A4": "A4-Portal",
+    "A5": "A5-Portal",
+    "A6": "A6-Portal",
+    "A7": "A7-Portal",
+    "AStar": "A*-Portal",
+    "ADev": "AD-Portal",
+    "B1": "B1-Portal",
+    "B2": "B2-Portal",
+    "B3": "B3-Portal",
+    "B4": "B4-Portal",
+    "B5": "B5-Portal",
+    "B6": "B6-Portal",
+    "B7": "B7-Portal",
+    "BStar": "B*-Portal",
+    "C1": "C1-Portal",
+    "C2": "C2-Portal",
+    "C3": "C3-Portal",
+    "C4": "C4-Portal",
+    "C5": "C5-Portal",
+    "C6": "C6-Portal",
+    "C7": "C7-Portal",
+    "CStar": "C*-Portal",
+    "CMessenger": "CM-Portal",
+}
+
+PORTAL_ORDER: Sequence[str] = [
+    "A1-Portal",
+    "A2-Portal",
+    "A3-Portal",
+    "A4-Portal",
+    "A5-Portal",
+    "A6-Portal",
+    "A7-Portal",
+    "A*-Portal",
+    "AD-Portal",
+    "B1-Portal",
+    "B2-Portal",
+    "B3-Portal",
+    "B4-Portal",
+    "B5-Portal",
+    "B6-Portal",
+    "B7-Portal",
+    "B*-Portal",
+    "C1-Portal",
+    "C2-Portal",
+    "C3-Portal",
+    "C4-Portal",
+    "C5-Portal",
+    "C6-Portal",
+    "C7-Portal",
+    "C*-Portal",
+    "CM-Portal",
+]
