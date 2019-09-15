@@ -7,6 +7,8 @@ import tkinter
 from tkinter import Frame
 from tkinter import Label
 
+from talos_evilseed.widgets.sigil import SigilWidget
+
 
 class PuzzleCell:
     __slots__ = (
@@ -38,12 +40,19 @@ class PuzzleCell:
         self._frame.grid(
             row=self._row,
             column=self._column,
-            sticky=tkinter.W+tkinter.E,
+            sticky=tkinter.W+tkinter.E+tkinter.N+tkinter.S,
         )
-        self._puzzle_label: Label = Label(self._frame, text=self._puzzle_name)
+
+        self._puzzle_label: Label = Label(
+            self._frame,
+            text=self._puzzle_name,
+        )
         self._puzzle_label.grid(sticky=tkinter.N+tkinter.W+tkinter.E)
-        self._puzzle_sigil_widget: Label = Label(self._frame, text=self._puzzle_sigil)
-        self._puzzle_sigil_widget.grid(sticky=tkinter.S+tkinter.W+tkinter.E)
+
+        self._puzzle_sigil_widget: SigilWidget = SigilWidget(
+            self._frame,
+            sigil_name=self._puzzle_sigil,
+        )
 
 
 
