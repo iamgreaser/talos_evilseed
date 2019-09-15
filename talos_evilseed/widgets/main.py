@@ -7,6 +7,7 @@ from typing import Optional
 from typing import Sequence
 
 import tkinter
+from tkinter import Button
 from tkinter import Frame
 
 from talos_evilseed import schema
@@ -19,6 +20,9 @@ if TYPE_CHECKING:
 class MainWindow(Frame):
     __slots__ = (
         "_app",
+        "_ctrl_frame",
+        "_ctrl_new_button",
+        "_ctrl_export_button",
         "_master",
         "_puzzle_row_groups",
         "_puzzle_row_frames",
@@ -34,6 +38,7 @@ class MainWindow(Frame):
         self._master.title("Talos EvilSeed - randomizer full control configurator")
         self.grid()
         self._build_puzzle_rows()
+        self._build_control_pane()
 
     def _build_puzzle_rows(self) -> None:
         self._puzzle_row_groups: List[List[PuzzleRow]] = []
@@ -46,7 +51,7 @@ class MainWindow(Frame):
 
         for frame_idx, f_matcher in enumerate(MATCHERS):
             frame = Frame(self)
-            frame.grid(row=0, padx=20, column=frame_idx, sticky=tkinter.N)
+            frame.grid(row=0, padx=20, ipady=20, column=frame_idx, sticky=tkinter.N)
             self._puzzle_row_frames.append(frame)
 
             puzzle_rows = [
@@ -62,4 +67,25 @@ class MainWindow(Frame):
             ]
 
             self._puzzle_row_groups.append(puzzle_rows)
+
+    def _build_control_pane(self) -> None:
+        self._control_pane_frame = Frame(self)
+        self._control_pane_frame.grid(
+            row=1,
+            column=0,
+            columnspan=2,
+            sticky=tkinter.S+tkinter.W+tkinter.E,
+        )
+
+        self._ctrl_new_button = Button(
+            self._control_pane_frame,
+            text="New seed",
+        )
+        self._ctrl_new_button.grid(column=0, row=0, ipadx=20, ipady=10)
+
+        self._ctrl_export_button = Button(
+            self._control_pane_frame,
+            text="Export",
+        )
+        self._ctrl_export_button.grid(column=2, row=0, ipadx=20, ipady=10)
 

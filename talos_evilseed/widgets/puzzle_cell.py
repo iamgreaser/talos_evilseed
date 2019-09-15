@@ -20,23 +20,25 @@ class PuzzleCell:
         "_app",
         "_column",
         "_frame",
+        "_level_name",
         "_master",
-        "_row",
         "_puzzle_label",
         "_puzzle_name",
         "_puzzle_sigil",
         "_puzzle_sigil_widget",
+        "_row",
     )
 
-    def __init__(self, master: Frame, *, app: "Application", puzzle_name: str, puzzle: Dict[str, str], row: int, column: int) -> None:
+    def __init__(self, master: Frame, *, app: "Application", level_name: str, puzzle_name: str, puzzle: Dict[str, str], row: int, column: int) -> None:
         #super().__init__(master)
         self._master = master
         self._app = app
         self._active = False
         self._row = row
         self._column = column
+        self._level_name = level_name
         self._puzzle_name = puzzle_name
-        self._puzzle_sigil = puzzle["sigil"]
+        self._puzzle_sigil = app.get_sigil_for_puzzle(level_name, puzzle_name)
         self._build_frame()
 
     def on_lmb_click(self, ev: object) -> None:
@@ -77,6 +79,12 @@ class PuzzleCell:
 
     def get_sigil(self) -> str:
         return self._puzzle_sigil
+
+    def get_name(self) -> str:
+        return self._puzzle_name
+
+    def get_level_name(self) -> str:
+        return self._level_name
 
     def set_active(self, active: bool) -> None:
         self._active = active

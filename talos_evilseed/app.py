@@ -6,6 +6,7 @@ from typing import Sequence
 import tkinter
 
 from talos_evilseed import schema
+from talos_evilseed.seed_state import SeedState
 from talos_evilseed.widgets.main import MainWindow
 from talos_evilseed.widgets.puzzle_cell import PuzzleCell
 
@@ -17,6 +18,7 @@ class Application:
         "_arg_parser",
         "_arg_map",
         "_main_window",
+        "_seed_state",
     )
 
     def __init__(self, *, appname: str, args: Sequence[str]) -> None:
@@ -32,6 +34,7 @@ class Application:
 
     def run(self) -> None:
         """Run the application."""
+        self._seed_state = SeedState()
         self._build_main_window()
         self._run_main_window()
 
@@ -48,12 +51,29 @@ class Application:
                 s1 = self._active_puzzle.get_sigil()
                 puzzle.set_sigil(s1)
                 self._active_puzzle.set_sigil(s0)
+
+                # Save the new swap
+                with self._seed_state.atomic():
+                    self._seed_state.set_sigil_for_puzzle(
+                        puzzle.get_level_name(),
+                        puzzle.get_name(),
+                        puzzle.get_sigil(),
+                    )
+                    self._seed_state.set_sigil_for_puzzle(
+                        self._active_puzzle.get_level_name(),
+                        self._active_puzzle.get_name(),
+                        self._active_puzzle.get_sigil(),
+                    )
+
                 self._active_puzzle.set_active(False)
                 self._active_puzzle = None
         else:
             # Activate this cell.
             self._active_puzzle = puzzle
             self._active_puzzle.set_active(True)
+
+    def get_sigil_for_puzzle(self, level_name: str, puzzle_name: str) -> str:
+        return self._seed_state.get_sigil_for_puzzle(level_name, puzzle_name)
 
     def _build_main_window(self) -> None:
         self._main_window: MainWindow = MainWindow(app=self)

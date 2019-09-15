@@ -64,6 +64,7 @@ class PuzzleRow:
             PuzzleCell(
                 self._master,
                 app=self._app,
+                level_name=self._level_name,
                 puzzle_name=puzzle_name,
                 puzzle=puzzle,
                 row=self._row,
