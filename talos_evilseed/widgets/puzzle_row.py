@@ -1,5 +1,6 @@
 # vim: set sts=4 sw=4 et :
 
+from typing import TYPE_CHECKING
 from typing import Dict
 from typing import List
 from typing import Optional
@@ -10,9 +11,13 @@ from tkinter import Label
 
 from talos_evilseed.widgets.puzzle_cell import PuzzleCell
 
+if TYPE_CHECKING:
+    from talos_evilseed.app import Application
+
 
 class PuzzleRow:
     __slots__ = (
+        "_app",
         "_level_label",
         "_level_name",
         "_portal_label",
@@ -22,8 +27,9 @@ class PuzzleRow:
         "_row",
     )
 
-    def __init__(self, master: Frame, *, level_name: str, level: Dict[str, Dict[str, str]], row: int) -> None:
+    def __init__(self, master: Frame, *, app: "Application", level_name: str, level: Dict[str, Dict[str, str]], row: int) -> None:
         self._master: Frame = master
+        self._app = app
         self._level_name = level_name
         self._puzzles = level
         self._row = row
@@ -52,6 +58,7 @@ class PuzzleRow:
         self._puzzle_cells: List[PuzzleCell] = [
             PuzzleCell(
                 self._master,
+                app=self._app,
                 puzzle_name=puzzle_name,
                 puzzle=puzzle,
                 row=self._row,

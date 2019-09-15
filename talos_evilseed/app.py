@@ -6,6 +6,7 @@ import tkinter
 
 from talos_evilseed import schema
 from talos_evilseed.widgets.main import MainWindow
+from talos_evilseed.widgets.puzzle_cell import PuzzleCell
 
 
 class Application:
@@ -32,8 +33,11 @@ class Application:
         self._build_main_window()
         self._run_main_window()
 
+    def on_puzzle_lmb_click(self, puzzle: PuzzleCell) -> None:
+        puzzle.set_sigil("MJ99")
+
     def _build_main_window(self) -> None:
-        self._main_window: MainWindow = MainWindow()
+        self._main_window: MainWindow = MainWindow(app=self)
 
     def _run_main_window(self) -> None:
         self._main_window.mainloop()

@@ -1,5 +1,6 @@
 # vim: set sts=4 sw=4 et :
 
+from typing import TYPE_CHECKING
 from typing import Callable
 from typing import List
 from typing import Optional
@@ -11,15 +12,26 @@ from tkinter import Frame
 from talos_evilseed import schema
 from talos_evilseed.widgets.puzzle_row import PuzzleRow
 
+if TYPE_CHECKING:
+    from talos_evilseed.app import Application
+
 
 class MainWindow(Frame):
     __slots__ = (
+        "_app",
+        "_master",
         "_puzzle_row_groups",
         "_puzzle_row_frames",
     )
 
-    def __init__(self, master: Optional[Frame]=None) -> None:
-        super().__init__(master)
+    def __init__(self, master: Optional[tkinter.Tk]=None, *, app: "Application") -> None:
+        if master is None:
+            self._master = tkinter.Tk()
+        else:
+            self._master = master
+        super().__init__(self._master)
+        self._app = app
+        self._master.title("Talos EvilSeed - randomizer full control configurator")
         self.grid()
         self._build_puzzle_rows()
 
@@ -40,6 +52,7 @@ class MainWindow(Frame):
             puzzle_rows = [
                 PuzzleRow(
                     frame,
+                    app=self._app,
                     level_name=level_name,
                     level=level,
                     row=i,

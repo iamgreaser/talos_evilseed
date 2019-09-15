@@ -1,7 +1,6 @@
 # vim: set sts=4 sw=4 et :
 
 import math
-from typing import Any
 from typing import Dict
 from typing import List
 from typing import Optional
@@ -42,7 +41,6 @@ class SigilWidget:
 
     def __init__(self, master: Frame, *, sigil_name: str) -> None:
         self._master: Frame = master
-        self._sigil_name = sigil_name
 
         self._sigil_frame: Frame = Frame(
             self._master,
@@ -53,7 +51,23 @@ class SigilWidget:
             width=54,
             height=22,
         )
-        self._shapes: List[Any] = []
+        self._shapes: List[int] = []
+
+        self.set_sigil(sigil_name)
+
+        # FIXME this layout sucks
+        #self._sigil_frame.grid(sticky=tkinter.S+tkinter.W+tkinter.E)
+        #self._sigil_icon.grid(sticky=tkinter.W+tkinter.E)
+        self._sigil_frame.grid(sticky=tkinter.S+tkinter.W)
+        self._sigil_icon.grid(sticky=tkinter.W)
+
+    def _clear_sigil_shape(self) -> None:
+        for shape in self._shapes:
+            self._sigil_icon.delete(shape) # type: ignore
+
+    def set_sigil(self, sigil_name: str) -> None:
+        self._sigil_name = sigil_name
+        self._clear_sigil_shape()
         self._draw_shape(
             color_name=sigil_name[0],
             shape_name=sigil_name[1],
@@ -70,12 +84,6 @@ class SigilWidget:
             anchor=tkinter.NE,
             text=self._sigil_name[:2],
         ))
-
-        # FIXME this layout sucks
-        #self._sigil_frame.grid(sticky=tkinter.S+tkinter.W+tkinter.E)
-        #self._sigil_icon.grid(sticky=tkinter.W+tkinter.E)
-        self._sigil_frame.grid(sticky=tkinter.S+tkinter.W)
-        self._sigil_icon.grid(sticky=tkinter.W)
 
     def _draw_shape(self, *, color_name: str, shape_name: str, bg: bool) -> None:
         color = ("#000000" if bg else COLOR_MAP[color_name])
